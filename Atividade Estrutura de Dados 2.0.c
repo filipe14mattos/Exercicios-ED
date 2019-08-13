@@ -41,15 +41,18 @@ void Cad_aluno(int qtdea, TAluno *aluno){
 	while(qtdea>0){
 	printf("Digite a matricula do aluno: ");
 	scanf("\n%i", &matricula);
-	check = checkmatricula(matricula,&aluno,qtdea);
+	check = checkmatricula(matricula,aluno,qtdea);
 	if(check){
 	printf("Digite o nome do aluno: ");
 	scanf("\n%s", &aluno[i].nome);
 	printf("Digite o coeficiete do aluno: ");
 	scanf("\n%f", &aluno[i].coeficiente);
-	i++;
 	qtdea--;
 		}
+		//printf("%s\n %i\n %f\n", temp->nome, temp->matricula, temp->coeficiente);
+		//aluno[i] = temp;
+		i++;
+		printf("%s\n %i\n %f\n", aluno[i].nome, aluno[i].matricula, aluno[i].coeficiente);
 	}
 }
 
@@ -72,15 +75,16 @@ int main (){
 	int qtdea, *op,*sair=1;
 	printf("Digite a quantidade de alunos: ");
 	scanf("%i", &qtdea);
-	aluno = malloc(qtdea*sizeof(TAluno));
+	aluno = (TAluno *)malloc(sizeof(TAluno)*qtdea);
 	menu(&op,&sair);
 	if(op==4){
 		sair=0;
 	}
 	while(sair>0){
 		if(op == 1){
-			Cad_aluno(qtdea,aluno);
+			Cad_aluno(qtdea,&aluno);
 			menu(&op,&sair);
+			printf("%s\n %i\n %f\n", aluno[0].nome, aluno[0].matricula, aluno[0].coeficiente);
 			if(op==4){
 				sair=0;
 			}
