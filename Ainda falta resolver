@@ -1,0 +1,1 @@
+- Bug que nao imprime a struct na consulta (testar se a struct esta recebendo os valores ou se é na hora de printar ela mesmo)
